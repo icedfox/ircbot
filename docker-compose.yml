@@ -1,0 +1,9 @@
+version: '3'
+services: 
+  irc:
+    build: 
+      context: .
+      dockerfile: Dockerfile.irc
+    volumes: 
+      - ./irc:/app:rw
+      - /app/node_modules
