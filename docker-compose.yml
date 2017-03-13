@@ -3,7 +3,13 @@ services:
   irc:
     build: 
       context: .
-      dockerfile: Dockerfile.irc
-    volumes: 
-      - ./irc:/app:rw
+      dockerfile: Dockerfile.downloader
+    env_file:
+      - env/downloader.env
+    volumes:
+      - ./downloads:/tmp/downloads:rw
+      - ./downloader:/app:rw
       - /app/node_modules
+  
+  client:
+    image: library/irssi:latest
