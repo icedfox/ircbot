@@ -9,8 +9,6 @@
   "author": "Gael G",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "1.17.1",
-    "express": "4.15.2",
-    "irc": "0.5.2"
+    "irc-xdcc": "0.0.22"
   }
 }
