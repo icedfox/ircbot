@@ -2,7 +2,8 @@ const Downloader = require('./downloader');
 
 const grpc = require('grpc');
 
-const proto = require('downloader.proto');
+const PROTO_PATH = __dirname + '/downloader.proto';
+var proto = grpc.load(PROTO_PATH).downloader;
 const server = new grpc.Server();
 
 function download (call, callback) {
@@ -29,8 +30,8 @@ function download (call, callback) {
 	});
 }
 
-server.addProtoService(proto.downloader.DownloaderService.service, {
-	Download: download
+server.addProtoService(proto.DownloaderService.service, {
+	download: download
 });
 
 server.bind('0.0.0.0:50050', grpc.ServerCredentials.createInsecure());
