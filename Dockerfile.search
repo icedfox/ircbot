@@ -1,0 +1,9 @@
+FROM library/node:7.7.1
+
+COPY ./search/package.json /app/package.json
+
+WORKDIR /app
+
+RUN npm install
+
+ENTRYPOINT ["node", "--debug", "index.js"]
