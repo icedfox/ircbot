@@ -1,12 +1,8 @@
 {
-  "name": "irc",
-  "version": "1.0.0",
-  "description": "irc",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Gael G",
+  "name": "downloader",
+  "version": "0.0.1",
+  "description": "Download microservice.",
+  "main": "index.js",
   "license": "ISC",
   "dependencies": {
     "grpc": "1.1.2",
