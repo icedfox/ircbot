@@ -1,0 +1,16 @@
+{
+  "name": "BBGR8",
+  "version": "0.0.0",
+  "private": true,
+  "author": "Team snow",
+  "description": "Download stuff.",
+  "dependencies": {
+    "hubot": "2.19.0",
+    "hubot-help": "0.2.0",
+    "hubot-slack": "4.3.3",
+    "grpc": "1.1.2"
+  },
+  "engines": {
+    "node": "7.7.3"
+  }
+}

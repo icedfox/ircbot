@@ -1,0 +1,11 @@
+{
+  "name": "search",
+  "version": "0.0.1",
+  "description": "Search miscroservice.",
+  "main": "index.js",
+  "license": "ISC",
+  "dependencies": {
+    "request": "2.81.0",
+    "grpc": "1.1.2"
+  }
+}

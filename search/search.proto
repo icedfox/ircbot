@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package searcher;
+
+// The greeting service definition.
+service Searcher {
+  // Do a search
+  rpc Search (SearchRequest) returns (SearchReply) {}
+}
+
+// The request message containing the user's name.
+message SearchRequest {
+  string query = 1;
+}
+
+// The response message containing the greetings
+message SearchReply {
+  string name = 1;
+  string irc_server_addr = 2;
+  string xdcc_pack_id = 3;
+  string xdcc_bot_nickname = 4;
+  string channel_name = 5;
+}
