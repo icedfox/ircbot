@@ -1,15 +1,31 @@
 version: '3'
 services: 
-  irc:
+  downloader:
     build: 
       context: .
       dockerfile: Dockerfile.downloader
     env_file:
       - env/downloader.env
     volumes:
-      - ./downloads:/tmp/downloads:rw
+      - downloads:/tmp/downloads:rw
       - ./downloader:/app:rw
       - /app/node_modules
   
-  client:
-    image: library/irssi:latest
+  search:
+    build: 
+      context: .
+      dockerfile: Dockerfile.search
+    volumes:
+      - ./search:/app:rw
+      - /app/node_modules
+  
+  slackbot:
+    build: 
+      context: .
+      dockerfile: Dockerfile.slackbot
+    volumes:
+      - ./slackbot:/app:rw
+      - /app/node_modules
+
+volumes: 
+  downloads: {}

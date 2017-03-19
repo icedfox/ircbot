@@ -1,5 +1,4 @@
 node_modules/
 *.log
-downloads/
 env/*
 !env/downloader.sample.env
