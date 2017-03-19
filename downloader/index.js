@@ -1,17 +1,37 @@
-const Downloader = require('./downloader')
+const Downloader = require('./downloader');
 
-let d = new Downloader(
-    process.env.XDCC_BOT_NICKNAME,
-    process.env.CHANNELS.split(','),
-    process.env.CLIENT_NICKNAME,
-    process.env.DOWNLOAD_DIR
-)
+const grpc = require('grpc');
 
-d.init()
-    .then(() => {
-        return d.download(
-            process.env.XDCC_BOT_NICKNAME,
-            process.env.XDCC_PACK_ID
-        )
-    })
-    .catch(err => console.error('ERROR "%s"', err))
+const proto = require('downloader.proto');
+const server = new grpc.Server();
+
+function download (call, callback) {
+	
+	let d = new Downloader(
+	    call.request.botNick,
+	    call.request.channelName,
+	    process.env.CLIENT_NICKNAME,
+	    process.env.DOWNLOAD_DIR
+	);
+
+	d.init()
+	.then(() => {
+		d.download(call.request.botNick, call.request.packId)
+		.then(() => {
+			callback(null, {
+				message: 'Downloading your shit'
+			});
+		});
+	})
+	.catch(err => {
+		console.error('ERROR "%s"', err);
+		callback(err, null);
+	});
+}
+
+server.addProtoService(proto.downloader.DownloaderService.service, {
+	Download: download
+});
+
+server.bind('0.0.0.0:50050', grpc.ServerCredentials.createInsecure());
+server.start();

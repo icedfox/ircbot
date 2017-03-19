@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package downloader;
+
+service DownloaderService {
+	rpc Download (DownloadRequest) returns (DownloadReply) {}
+}
+
+message DownloadRequest {
+	string serverAddr = 1;
+ 	string botNick = 2;
+ 	string packId = 3;
+}
+
+message DownloadReply {
+ 	string message = 1;
+}
