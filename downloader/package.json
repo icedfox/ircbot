@@ -9,6 +9,7 @@
   "author": "Gael G",
   "license": "ISC",
   "dependencies": {
+    "grpc": "1.1.2",
     "irc-xdcc": "0.0.22"
   }
 }
